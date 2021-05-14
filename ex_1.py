@@ -3,7 +3,7 @@ import numpy as np
 
 data_x = np.random.normal(size=[1000, 1])
 noise = np.random.normal(size=[1000, 1]) * 0.2
-data_y = data_x * 3. + 2. + noise
+data_y = data_x * 3.4 + 2. + noise
 
 
 class Model:
@@ -20,7 +20,7 @@ model = Model()
 var_list = [model.w, model.b]
 opt = tf.optimizers.SGD(0.1) #gradient decent 梯度下降优化器，下降速度为0.1
 
-for t in range(100): #迭代100次
+for t in range(300): #迭代100次
     with tf.GradientTape() as tape:
         y_ = model.call(data_x) #前向传播，计算模型的输出值
         loss = tf.reduce_mean(tf.square(data_y - y_)) #计算损失函数
